@@ -1,0 +1,25 @@
+@import '../../_config'
+
+// mapで管理してるカラーリストからkeyでvalを取得
+colors($name)
+  return $color.$name
+
+// z-indexをmapで一元管理
+z( $name 'base' )
+  return $z-index.$name
+
+// pxを対象幅を基にしたパーセンテージに変換
+ppx($px, $width $laptop-width)
+  return ($px / $laptop-width * 100%)
+
+// htmlrootに対するremをpxで指定する
+rpx($px, $ratio $jumpRatio) 
+  $_ratio = ($ratio / 10)
+  $rem = ($px / 10 / (1 + $_ratio) + 'rem')
+  return $rem
+
+// 画像の比率を返す
+ratio($name)
+  $base = 12
+  $target = $rationame.$name
+  return ceil( $target / $base * 1000 ) / 1000

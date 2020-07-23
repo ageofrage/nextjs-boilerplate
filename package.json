@@ -8,14 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "destyle.css": "^1.0.13",
     "next": "9.4.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "stylus": "^0.54.8"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@types/node": "^14.0.22",
     "@types/react": "^16.9.42",
+    "@zeit/next-stylus": "^1.0.1",
+    "autoprefixer": "^9.8.5",
+    "postcss-css-variables": "^0.17.0",
+    "poststylus": "^1.0.0",
     "typescript": "^3.9.6"
   }
 }

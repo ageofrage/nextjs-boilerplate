@@ -1,0 +1,93 @@
+@import '../../_config'
+@import './_functions'
+
+
+// rootHtmlをcalcで指定して、font-sizeをレスポンシブにする
+htmlFontSize($baseFontsize $jumpRatio)
+  font-size 'calc(10px + #{%s} * ((100vw - 320px) / (1440 - 320) ))' % ($baseFontsize)
+
+// breakpointの指定
+break($point 'md')
+  @media $breakpoints.$point
+    {block}
+
+// beforeのショートハンド（contentにdefaultを設定して、いちいち打たなくてもいいようにする）
+before($content '')
+  &:before
+    content $content
+    {block}
+
+// afterのショートハンド
+after($content '')
+  &:after 
+    content $content
+    {block}
+
+// 正方形のショートハンド
+wh($length)
+  width $length
+  height $length
+
+// thumbnailのアスペクト比率とobject-fitの設定
+aspect($name normal, $fit cover, $selector 'img', $pseudo 'after')
+  position relative
+  flex-shrink 0
+  width 100%
+  height auto
+  overflow hidden
+  &:{$pseudo}
+    display block
+    width 100%
+    padding-top percentage(f.ratio($name))
+    content ''
+  >{$selector}
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    if $fit == 'cover'
+      object-fit cover
+      font-family 'object-fit cover'
+    if $fit == 'contain'
+      object-fit contain
+      font-family 'object-fit contain'
+
+//表示行数制御
+limitRow($font 13px, $row 2, $line $default-line, $max false, $min false, $minRow 1)
+  display block // IE 対応
+  display -webkit-box
+  overflow hidden
+  font-size $font
+  line-height $line
+  -webkit-box-orient vertical
+  -webkit-line-clamp $row
+  if $max
+    height auto
+    max-height ($font * $line * $minRow)
+  else if $min
+    height ($font * $line * $row)
+    min-height ($font * $line * $minRow)
+  else
+    height ($font * $line * $row)
+
+spPadding($side $sp-side)
+  padding-right $side
+  padding-left $side
+  break(sm)
+    padding-right 0
+    padding-left 0
+
+//レスポンシブなコンテンツ幅
+content($type 'normal', $sp true)
+  width 100%
+  margin auto
+  if ($sp)
+    spPadding()
+  break(md)
+    if ($type == 'narrow')
+      max-width $narrow-width
+    if ($type == 'normal')
+      max-width $inner-width
+    if ($type == 'wide')
+      max-width $laptop-width
