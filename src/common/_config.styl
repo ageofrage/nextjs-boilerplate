@@ -1,5 +1,43 @@
+/* -------------------------------------------------------------------------- */
+/*                                break-point等                                */
+/* -------------------------------------------------------------------------- */
+$small-width = 320px
 $laptop-width = 1440px
+$defaultMinFont = 11px
+$defaultMaxFont = 13px
+$breakpoint-small = 896px
+$breakpoint-medium = 1200px
+$breakpoints {
+  sm 'screen and (max-width:'+ $breakpoint-small +')',
+  md 'screen and (min-width:' + $breakpoint-small + 1 +')',
+  lg 'screen and (min-width:'+ $breakpoint-medium +')',
+  xl 'screen and (min-width:' + $laptop-width + ')',
+}
 
+/* -------------------------------------------------------------------------- */
+/*                                    font                                    */
+/* -------------------------------------------------------------------------- */
+$main-font = 'Noto Sans JP', -apple-system, blinkmacsystemfont, yu gothic, yugothic, verdana, meiryo,sans-serif
+$en-font = 'Barlow Semi Condensed', -apple-system, blinkmacsystemfont, sans-serif
+// weight
+$normal = 400
+$semi-bold = 500
+$bold = 700
+// line-height
+$default-line = 1.6
+
+/* -------------------------------------------------------------------------- */
+/*                                 content幅、余白                                */
+/* -------------------------------------------------------------------------- */
+//size
+$inner-width = 1200px
+$narrow-width = 896px
+// spの余白
+$sp-side = 12px
+
+/* -------------------------------------------------------------------------- */
+/*                                   z-index                                  */
+/* -------------------------------------------------------------------------- */
 $z-index {
   front 9999,
   hamburger 900,
@@ -20,6 +58,9 @@ $z-index {
   back -1
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                    サムネイル                                   */
+/* -------------------------------------------------------------------------- */
 $ratioName {
   square (12 / 1),
   normal (12 / 4 * 3),
@@ -32,41 +73,13 @@ $ratioName {
   bronze (12 * 3.303)
 }
 
-//break-point
-$breakpoint-small = 896px
-$breakpoint-medium = 1200px
 
-$breakpoints {
-  sm 'screen and (max-width:'+ $breakpoint-small +')',
-  md 'screen and (min-width:' + $breakpoint-small + 1 +')',
-  lg 'screen and (min-width:'+ $breakpoint-medium +')',
-  xl 'screen and (min-width:' + g.$laptop-width + ')',
-}
-
+/* -------------------------------------------------------------------------- */
+/*                                      色                                     */
+/* -------------------------------------------------------------------------- */
 $color{
   dark #000,
   pale #fff
 }
 
-// font
-$main-font = 'Noto Sans JP', -apple-system, blinkmacsystemfont, yu gothic, yugothic, verdana, meiryo,sans-serif
-$en-font = 'Barlow Semi Condensed', -apple-system, blinkmacsystemfont, sans-serif
-
-// weight
-$normal = 400
-$semi-bold = 500
-$bold = 700
-
-// line-height
-$default-line = 1.6
-
-//size
-$inner-width = 1200px
-$narrow-width = 768px
-
-// フォントの縮小率
-$jumpRatio = 3
-
-// spの余白
-$sp-side = 16px
 

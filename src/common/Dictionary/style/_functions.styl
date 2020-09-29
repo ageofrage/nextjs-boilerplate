@@ -5,18 +5,24 @@ colors($name)
   return $color.$name
 
 // z-indexをmapで一元管理
-z( $name 'base' )
+z( $name = 'base' )
   return $z-index.$name
 
-// pxを対象幅を基にしたパーセンテージに変換
-ppx($px, $width $laptop-width)
-  return ($px / $laptop-width * 100%)
+// 最小と最大、対象サイズをcalcで指定して、レスポンシブにする
+liquid($minFontsize = $defaultMinFont, $maxFontsize = $defaultMaxFont, $min = $small-width, $max = $laptop-width)
+  $addAmount = unit(($maxFontsize - $minFontsize), '')
+  return 'calc(%s + %s * ((100vw - %s) / (%s - %s) ))' % ($minFontsize $addAmount $min unit($max, '') unit($min, ''))
 
 // htmlrootに対するremをpxで指定する
-rpx($px, $ratio $jumpRatio) 
-  $_ratio = ($ratio / 10)
-  $rem = ($px / 10 / (1 + $_ratio) + 'rem')
-  return $rem
+rpx($px, $maxFontsize = $defaultMaxFont) 
+  $rem = ($px / unit($maxFontsize,''))
+  $ceilRem = ceil($rem, 6)
+  return unit($ceilRem, rem)
+
+// pxを対象幅を基にしたパーセンテージに変換
+ppx($px, $width = $laptop-width)
+  $percent = percentage($px / $width)
+  return ceil($percent, 6)
 
 // 画像の比率を返す
 ratio($name)

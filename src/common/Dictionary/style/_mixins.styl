@@ -1,24 +1,19 @@
 @import '../../_config'
 @import './_functions'
 
-
-// rootHtmlをcalcで指定して、font-sizeをレスポンシブにする
-htmlFontSize($baseFontsize $jumpRatio)
-  font-size 'calc(10px + #{%s} * ((100vw - 320px) / (1440 - 320) ))' % ($baseFontsize)
-
 // breakpointの指定
-break($point 'md')
+break($point = md)
   @media $breakpoints.$point
     {block}
 
 // beforeのショートハンド（contentにdefaultを設定して、いちいち打たなくてもいいようにする）
-before($content '')
+before($content = '')
   &:before
     content $content
     {block}
 
 // afterのショートハンド
-after($content '')
+after($content = '')
   &:after 
     content $content
     {block}
@@ -29,7 +24,7 @@ wh($length)
   height $length
 
 // thumbnailのアスペクト比率とobject-fitの設定
-aspect($name normal, $fit cover, $selector 'img', $pseudo 'after')
+aspect($name = normal, $fit = cover, $selector = 'img', $pseudo = 'after')
   position relative
   flex-shrink 0
   width 100%
@@ -38,7 +33,7 @@ aspect($name normal, $fit cover, $selector 'img', $pseudo 'after')
   &:{$pseudo}
     display block
     width 100%
-    padding-top percentage(f.ratio($name))
+    padding-top percentage(ratio($name))
     content ''
   >{$selector}
     position absolute
@@ -54,7 +49,7 @@ aspect($name normal, $fit cover, $selector 'img', $pseudo 'after')
       font-family 'object-fit contain'
 
 //表示行数制御
-limitRow($font 13px, $row 2, $line $default-line, $max false, $min false, $minRow 1)
+limitRow($font = 13px, $row = 2, $line = $default-line, $max = false, $min = false, $minRow = 1)
   display block // IE 対応
   display -webkit-box
   overflow hidden
@@ -71,7 +66,7 @@ limitRow($font 13px, $row 2, $line $default-line, $max false, $min false, $minRo
   else
     height ($font * $line * $row)
 
-spPadding($side $sp-side)
+spPadding($side = $sp-side)
   padding-right $side
   padding-left $side
   break(sm)
@@ -79,7 +74,7 @@ spPadding($side $sp-side)
     padding-left 0
 
 //レスポンシブなコンテンツ幅
-content($type 'normal', $sp true)
+content($type = 'normal', $sp = true)
   width 100%
   margin auto
   if ($sp)

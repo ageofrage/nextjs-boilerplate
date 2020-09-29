@@ -1,8 +1,6 @@
-import React, { Component } from "react";
 import Head from "next/head";
-import { NextPage } from "next";
 
-export const Home: NextPage = () => {
+export default function Home() {
   return (
     <div className="container">
       <Head>
@@ -11,11 +9,11 @@ export const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1 className="title">
+        <h1>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className="description">
+        <p>
           Get started by editing <code>pages/index.js</code>
         </p>
 
@@ -115,12 +113,6 @@ export const Home: NextPage = () => {
           text-decoration: underline;
         }
 
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
         .title,
         .description {
           text-align: center;
@@ -208,4 +200,4 @@ export const Home: NextPage = () => {
       `}</style>
     </div>
   );
-};
+}
